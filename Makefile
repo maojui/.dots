@@ -1,10 +1,10 @@
 #
 # Author: Yuankui Lee @ 2019.04.30
-# https://github.com/djosix/.dots
+# https://github.com/maojui/.dots
 #
 
-GIT_NAME = djosix
-GIT_MAIL = djosicks@gmail.com
+GIT_NAME = maojui
+GIT_MAIL = maojui0427@gmail.com
 
 
 .PHONY: default part all bash zsh vim tmux git vundle dirs update reset

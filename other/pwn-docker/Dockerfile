@@ -16,7 +16,7 @@ RUN dpkg --add-architecture i386; \
     apt update; apt install -y libc6:i386 libstdc++6:i386; \
     rm -rf /var/lib/apt/lists/*
 
-RUN cd /root && git clone https://github.com/djosix/.dots.git; \
+RUN cd /root && git clone https://github.com/maojui/.dots.git; \
     cd .dots && make all && locale-gen en_US.UTF-8
 
 RUN pip install -U pip --no-cache-dir; \

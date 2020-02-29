@@ -1,0 +1,17 @@
+#!/bin/sh
+ip="$(curl ifconfig.me -s)";
+
+if [[ $ip != ""  ]]
+then
+    echo "Public IP address : $ip"
+else
+    echo "No internet connection ..."
+fi
+
+ifconfig | awk '
+BEGIN            { active = 0; find_ip = 0 }
+/^($|[^\t])/     { if(active && find_ip) print buf; buf = $0; active = 0; find_ip = 0; }
+/^\tinet[^6]/    { find_ip = 1; buf = buf ": " $0 }
+/status: active/ { active = 1 }
+END              { if(active && find_ip) print buf; }
+' | cut -f 1,6 -d ' '

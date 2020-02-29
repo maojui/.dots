@@ -27,7 +27,7 @@
 
   ```shell
   cd
-  git clone https://github.com/djosix/.dots.git
+  git clone https://github.com/maojui/.dots.git
   cd .dots
   make all
   ```

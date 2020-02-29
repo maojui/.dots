@@ -6,8 +6,8 @@
 omz=~/.omz
 omz_repo=https://github.com/robbyrussell/oh-my-zsh.git
 
-zsh_theme_src=zsh/djosix.zsh-theme
-zsh_theme=$omz/themes/djosix.zsh-theme
+zsh_theme_src=zsh/maojui.zsh-theme
+zsh_theme=$omz/themes/maojui.zsh-theme
 
 zshrc_src=zsh/config.zsh
 zshrc_tpl=$omz/templates/zshrc.zsh-template
@@ -46,7 +46,7 @@ echo "@@@ Creating $zshrc from $zshrc_tpl"
 cat $zshrc_tpl | sed "/^export ZSH=/ c\\
 export ZSH=\"$omz\"
 " | sed "/^ZSH_THEME=/ c\\
-ZSH_THEME=\"djosix\"
+ZSH_THEME=\"maojui\"
 " | sed "/^# DISABLE_AUTO_UPDATE/ c\\
 DISABLE_AUTO_UPDATE=\"true\"
 " | sed $'/^plugins=/ c\\

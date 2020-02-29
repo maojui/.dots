@@ -1,4 +1,4 @@
-# djosix 2017.05.30
+# maojui 2017.05.30
 
 local label_color='white'
 local user_color='green';
