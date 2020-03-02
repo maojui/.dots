@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ip="$(curl ifconfig.me -s)";
 
 if [[ $ip != ""  ]]
