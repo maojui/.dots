@@ -8,10 +8,29 @@ else
     echo "No internet connection ..."
 fi
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=MacOS;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
+if [[ $machine == "MacOS" ]] 
+then 
 ifconfig | awk '
 BEGIN            { active = 0; find_ip = 0 }
 /^($|[^\t])/     { if(active && find_ip) print buf; buf = $0; active = 0; find_ip = 0; }
 /^\tinet[^6]/    { find_ip = 1; buf = buf ": " $0 }
 /status: active/ { active = 1 }
 END              { if(active && find_ip) print buf; }
-' | cut -f 1,6 -d ' '
+' | cut -d " " -f 1,6
+else
+ifconfig | awk '
+BEGIN            { find_ip = 0 }
+/^[^ ]/          { if(find_ip) print buf; buf = $0; find_ip = 0; }
+/^[ ]+inet[^6]/  { find_ip = 1; buf = buf ": " $0 }
+END              { if(find_ip) print buf; }
+' | cut -d " " -f 1,15 
+fi
